@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Clinic - Home 2</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Home 2 Specific Styles */
+        .hero-section-2 {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0b5ed7 100%);
+            color: white;
+            padding: 8rem 0 6rem;
+            text-align: center;
+            position: relative;
+            margin-top: -30px;
+        }
+        
+        .hero-section-2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(13, 110, 253, 0.9) 0%, rgba(11, 94, 215, 0.8) 100%);
+        }
+        
+        .hero-section-2 .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-section-2 h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .hero-section-2 p {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .stats-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            padding: 4rem 0;
+            margin-top: -3rem;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 1;
+            transition: background-color 0.3s ease;
+        }
+        
+        [data-theme="dark"] .stats-section::before {
+            background: rgba(45, 45, 45, 0.95);
+        }
+        
+        .stats-section .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 0;
+        }
+        
+        [data-theme="dark"] .stat-card {
+            background: linear-gradient(135deg, rgba(45, 45, 45, 0.95) 0%, rgba(45, 45, 45, 0.9) 100%);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .stats-section .row {
+            display: flex;
+            align-items: stretch;
+        }
+        
+        .stats-section .row > [class*="col-"] {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(13, 110, 253, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(13, 110, 253, 0.3);
+            border-color: var(--primary-color);
+        }
+        
+        .stat-card .stat-number {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            line-height: 1;
+            position: relative;
+            z-index: 2;
+            animation: numberPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes numberPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .stat-card .stat-label {
+            font-size: 1.2rem;
+            color: var(--dark-color);
+            font-weight: 600;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+        
+        [data-theme="dark"] .stat-card .stat-label {
+            color: var(--text-color) !important;
+        }
+        
+        [data-theme="dark"] .stat-card .stat-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .feature-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(13, 110, 253, 0.2);
+        }
+        
+        .feature-box i {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-box h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .services-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .service-card-2 {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            color: var(--text-color);
+        }
+        
+        [data-theme="dark"] .service-card-2 {
+            background: var(--card-bg);
+            color: var(--text-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .service-card-2:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        [data-theme="dark"] .service-card-2:hover {
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+        
+        .service-card-2 .card-body {
+            padding: 2rem;
+        }
+        
+        .service-card-2 h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--heading-color);
+        }
+        
+        [data-theme="dark"] .service-card-2 h4 {
+            color: var(--heading-color) !important;
+        }
+        
+        .service-card-2 p {
+            color: var(--text-color);
+        }
+        
+        [data-theme="dark"] .service-card-2 p {
+            color: var(--text-color) !important;
+        }
+        
+        .testimonial-slider {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0b5ed7 100%);
+            padding: 5rem 0;
+            color: white;
+        }
+        
+        .testimonial-item {
+            text-align: center;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+        
+        [data-theme="dark"] .testimonial-item {
+            background: rgba(45, 45, 45, 0.95);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .testimonial-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        [data-theme="dark"] .testimonial-item:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+        
+        .testimonial-item .stars {
+            color: #ffc107;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-item p {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #212529 !important;
+        }
+        
+        [data-theme="dark"] .testimonial-item p {
+            color: var(--text-color) !important;
+        }
+        
+        .testimonial-item .author {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #212529 !important;
+        }
+        
+        [data-theme="dark"] .testimonial-item .author {
+            color: var(--text-color) !important;
+        }
+        
+        /* Services Section 2 Background */
+        .services-section-2 {
+            background: #f8f9fa;
+            transition: background-color 0.3s ease;
+        }
+        
+        [data-theme="dark"] .services-section-2 {
+            background: var(--card-bg) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="fas fa-hospital"></i> Medical Clinic
+                </a>
+                <button class="mobile-menu-toggle" type="button" aria-label="Toggle mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" id="dropdownHome" role="button" data-bs-toggle="dropdown">Home</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="index.html">Home</a></li>
+                                <li><a class="dropdown-item" href="index-2.html">Home 2</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="about.html" id="dropdown1" role="button" data-bs-toggle="dropdown">About</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="about.html">About Us</a></li>
+                                <li><a class="dropdown-item" href="testimonials.html">Testimonials</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="departments.html" id="dropdown2" role="button" data-bs-toggle="dropdown">Departments</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="departments.html">All Departments</a></li>
+                                <li><a class="dropdown-item" href="department-details.html">Cardiology</a></li>
+                                <li><a class="dropdown-item" href="neurology-details.html">Neurology</a></li>
+                                <li><a class="dropdown-item" href="pediatrics-details.html">Pediatrics</a></li>
+                                <li><a class="dropdown-item" href="orthopedics-details.html">Orthopedics</a></li>
+                                <li><a class="dropdown-item" href="dermatology-details.html">Dermatology</a></li>
+                                <li><a class="dropdown-item" href="emergency-details.html">Emergency</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="doctors.html" id="dropdown3" role="button" data-bs-toggle="dropdown">Doctors</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="doctors.html">All Doctors</a></li>
+                                <li><a class="dropdown-item" href="doctor-profile-john-smith.html">Dr. John Smith</a></li>
+                                <li><a class="dropdown-item" href="doctor-profile-sarah-johnson.html">Dr. Sarah Johnson</a></li>
+                                <li><a class="dropdown-item" href="doctor-profile-michael-brown.html">Dr. Michael Brown</a></li>
+                                <li><a class="dropdown-item" href="doctor-profile-emily-davis.html">Dr. Emily Davis</a></li>
+                                <li><a class="dropdown-item" href="doctor-profile-robert-wilson.html">Dr. Robert Wilson</a></li>
+                                <li><a class="dropdown-item" href="doctor-profile-lisa-anderson.html">Dr. Lisa Anderson</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="services.html" id="dropdown4" role="button" data-bs-toggle="dropdown">Services</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="services.html">All Services</a></li>
+                                <li><a class="dropdown-item" href="service-details.html?service=cardiac-care">Cardiac Care</a></li>
+                                <li><a class="dropdown-item" href="service-details.html?service=neurological-services">Neurological Services</a></li>
+                                <li><a class="dropdown-item" href="service-details.html?service=pediatric-care">Pediatric Care</a></li>
+                                <li><a class="dropdown-item" href="service-details.html?service=orthopedic-services">Orthopedic Services</a></li>
+                                <li><a class="dropdown-item" href="service-details.html?service=dermatology">Dermatology</a></li>
+                                <li><a class="dropdown-item" href="service-details.html?service=emergency-care">Emergency Care</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="appointments.html" id="dropdown5" role="button" data-bs-toggle="dropdown">Appointments</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="appointments.html">Book Appointment</a></li>
+                                <li><a class="dropdown-item" href="view-appointments.html">View Appointments</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="gallery.html" id="dropdown6" role="button" data-bs-toggle="dropdown">Gallery</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="gallery.html">Photo Gallery</a></li>
+                                <li><a class="dropdown-item" href="gallery.html">Video Gallery</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center">
+                        <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <ul class="navbar-auth-buttons">
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-outline-primary" href="login.html" style="padding: 0.5rem 1rem !important; border-radius: 5px;">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-primary" href="register.html" style="padding: 0.5rem 1rem !important; border-radius: 5px; color: white !important;">Register</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu Panel -->
+        <div class="mobile-menu-panel">
+            <ul class="mobile-menu-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="index.html" role="button">Home</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="index.html">Home</a></li>
+                        <li><a class="dropdown-item active" href="index-2.html">Home 2</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="about.html" role="button">About</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="about.html">About Us</a></li>
+                        <li><a class="dropdown-item" href="testimonials.html">Testimonials</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="departments.html" role="button">Departments</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="departments.html">All Departments</a></li>
+                        <li><a class="dropdown-item" href="department-details.html">Cardiology</a></li>
+                        <li><a class="dropdown-item" href="neurology-details.html">Neurology</a></li>
+                        <li><a class="dropdown-item" href="pediatrics-details.html">Pediatrics</a></li>
+                        <li><a class="dropdown-item" href="orthopedics-details.html">Orthopedics</a></li>
+                        <li><a class="dropdown-item" href="dermatology-details.html">Dermatology</a></li>
+                        <li><a class="dropdown-item" href="emergency-details.html">Emergency</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="doctors.html" role="button">Doctors</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="doctors.html">All Doctors</a></li>
+                        <li><a class="dropdown-item" href="doctor-profile-john-smith.html">Dr. John Smith</a></li>
+                        <li><a class="dropdown-item" href="doctor-profile-sarah-johnson.html">Dr. Sarah Johnson</a></li>
+                        <li><a class="dropdown-item" href="doctor-profile-michael-brown.html">Dr. Michael Brown</a></li>
+                        <li><a class="dropdown-item" href="doctor-profile-emily-davis.html">Dr. Emily Davis</a></li>
+                        <li><a class="dropdown-item" href="doctor-profile-robert-wilson.html">Dr. Robert Wilson</a></li>
+                        <li><a class="dropdown-item" href="doctor-profile-lisa-anderson.html">Dr. Lisa Anderson</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="services.html" role="button">Services</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="services.html">All Services</a></li>
+                        <li><a class="dropdown-item" href="service-details.html?service=cardiac-care">Cardiac Care</a></li>
+                        <li><a class="dropdown-item" href="service-details.html?service=neurological-services">Neurological Services</a></li>
+                        <li><a class="dropdown-item" href="service-details.html?service=pediatric-care">Pediatric Care</a></li>
+                        <li><a class="dropdown-item" href="service-details.html?service=orthopedic-services">Orthopedic Services</a></li>
+                        <li><a class="dropdown-item" href="service-details.html?service=dermatology">Dermatology</a></li>
+                        <li><a class="dropdown-item" href="service-details.html?service=emergency-care">Emergency Care</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="appointments.html" role="button">Appointments</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="appointments.html">Book Appointment</a></li>
+                        <li><a class="dropdown-item" href="view-appointments.html">View Appointments</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="gallery.html" role="button">Gallery</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="gallery.html">Photo Gallery</a></li>
+                        <li><a class="dropdown-item" href="gallery.html">Video Gallery</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+            </ul>
+            <div class="mobile-menu-dark-toggle">
+                <button id="darkModeToggleMobile" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <div class="mobile-menu-auth">
+                <a class="btn btn-outline-primary" href="login.html">Login</a>
+                <a class="btn btn-primary" href="register.html">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section 2 -->
+        <section class="hero-section-2">
+            <div class="container">
+                <h1>Advanced Healthcare Solutions</h1>
+                <p>Experience World-Class Medical Care with Cutting-Edge Technology</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="appointments.html" class="btn btn-light btn-lg">Schedule Appointment</a>
+                    <a href="services.html" class="btn btn-outline-light btn-lg">Our Services</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="row align-items-stretch">
+                    <div class="col-md-3 col-sm-6 mb-3 mb-md-0">
+                        <div class="stat-card h-100">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Expert</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-3 mb-md-0">
+                        <div class="stat-card h-100">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Departments</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-3 mb-md-0">
+                        <div class="stat-card h-100">
+                            <div class="stat-number">10k+</div>
+                            <div class="stat-label">Patients</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-3 mb-md-0">
+                        <div class="stat-card h-100">
+                            <div class="stat-number">25+</div>
+                            <div class="stat-label">Years</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="container py-5">
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+                <p>Excellence in healthcare delivery with patient-centered approach</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-box">
+                    <i class="fas fa-award"></i>
+                    <h4>Certified Excellence</h4>
+                    <p>Internationally recognized certifications and accreditations for healthcare.</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-microscope"></i>
+                    <h4>Technology</h4>
+                    <p>State-of-the-art medical equipment and innovative treatment methodologies.</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-users"></i>
+                    <h4>Expert Team</h4>
+                    <p>Highly qualified medical professionals with years of specialized experience.</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-clock"></i>
+                    <h4>24/7 Availability</h4>
+                    <p>Round-the-clock emergency services and urgent care facilities.</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-heart"></i>
+                    <h4>Compassionate</h4>
+                    <p>Patient-focused approach with personalized attention and support.</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-globe"></i>
+                    <h4>Global Standards</h4>
+                    <p>Following international healthcare protocols and best practices.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section 2 -->
+        <section class="container py-5 services-section-2" style="border-radius: 20px; padding: 4rem 2rem !important;">
+            <div class="section-title">
+                <h2>Our Medical Services</h2>
+                <p>Comprehensive healthcare solutions for all your medical needs</p>
+            </div>
+            <div class="services-grid-2">
+                <div class="service-card-2">
+                    <div class="card-body">
+                        <h4><i class="fas fa-heartbeat text-primary"></i> Cardiology</h4>
+                        <p>Comprehensive heart care services including diagnostics, treatment, and preventive care. Our cardiology department offers advanced diagnostic procedures, interventional cardiology, cardiac rehabilitation, and preventive heart health programs.</p>
+                        <a href="service-details.html?service=cardiac-care" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card-2">
+                    <div class="card-body">
+                        <h4><i class="fas fa-brain text-primary"></i> Neurology</h4>
+                        <p>Advanced neurological care for brain and nervous system disorders. We provide comprehensive treatment for stroke, epilepsy, Parkinson's disease, multiple sclerosis, and other neurological conditions with cutting-edge technology.</p>
+                        <a href="service-details.html?service=neurological-services" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card-2">
+                    <div class="card-body">
+                        <h4><i class="fas fa-baby text-primary"></i> Pediatrics</h4>
+                        <p>Specialized medical care for children from infancy through adolescence. Our team provides routine check-ups, vaccinations, treatment for childhood illnesses, and specialized care for developmental and chronic .</p>
+                        <a href="service-details.html?service=pediatric-care" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card-2">
+                    <div class="card-body">
+                        <h4><i class="fas fa-bone text-primary"></i> Orthopedics</h4>
+                        <p>Expert treatment for bone, joint, and muscle-related conditions. Our orthopedic specialists offer surgical and non-surgical treatments for fractures, joint replacements, sports injuries, and spine conditions.</p>
+                        <a href="service-details.html?service=orthopedic-services" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card-2">
+                    <div class="card-body">
+                        <h4><i class="fas fa-hand-sparkles text-primary"></i> Dermatology</h4>
+                        <p>Comprehensive skin care for various dermatological conditions. We treat acne, eczema, psoriasis, skin cancer, and provide cosmetic dermatology services including laser treatments and anti-aging procedures.</p>
+                        <a href="service-details.html?service=dermatology" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card-2">
+                    <div class="card-body">
+                        <h4><i class="fas fa-ambulance text-primary"></i> Emergency Care</h4>
+                        <p>24/7 emergency medical services with rapid response and expert care. Our emergency department is fully equipped to handle trauma, cardiac emergencies, and provides immediate life-saving interventions.</p>
+                        <a href="service-details.html?service=emergency-care" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial Section -->
+        <section class="testimonial-slider">
+            <div class="container">
+                <div class="section-title" style="color: white;">
+                    <h2 style="color: white;">What Our Patients Say</h2>
+                    <p style="color:rgba(255, 255, 255, 0.9);">Trusted by thousands of satisfied patients</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="testimonial-item">
+                            <div class="stars">
+                                
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"Outstanding medical care and compassionate staff. The doctors here."</p>
+                            <div class="author">- Sarah Johnson</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="testimonial-item">
+                            <div class="stars">
+                                
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"Modern facilities and expert care. I felt confident in their hands  my treatment."</p>
+                            <div class="author">- Michael Chen</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="testimonial-item">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"The best healthcare experience I've ever had. Professional."</p>
+                            <div class="author">- Emily Rodriguez</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+         
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Us</h4>
+                    <p>Medical Clinic is committed to providing exceptional healthcare services with a focus on patient care and medical excellence.</p>
+                    <div class="social-icons">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="index-2.html">Home 2</a>
+                    <a href="about.html">About Us</a>
+                    <a href="departments.html">Departments</a>
+                    <a href="doctors.html">Doctors</a>
+                    <a href="services.html">Services</a>
+                    <a href="appointments.html">Appointments</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer">123 Medical Street, Health City, HC 12345</a>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+1234567890">+1 234 567 890</a>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:info@medicalclinic.com">info@medicalclinic.com</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Opening Hours</h4>
+                    <p>Monday - Friday: 8:00 AM - 8:00 PM</p>
+                    <p>Saturday: 9:00 AM - 5:00 PM</p>
+                    <p>Sunday: 10:00 AM - 4:00 PM</p>
+                    <p>Emergency: 24/7</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Medical Clinic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+

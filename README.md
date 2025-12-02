@@ -1,2 +1,2 @@
-# medical-webzx
+# medical-webz
 website
